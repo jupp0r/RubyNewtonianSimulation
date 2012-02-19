@@ -20,14 +20,18 @@ attr_accessor :mass, :move, :position, :forces, :acceleration
   def calcforces(others)
     sumf = Vector[0.0, 0.0, 0.0]
     
-    puts "mass.rb - others.inspect: " + others.inspect
+#    puts "mass.rb - others.inspect: " + others.inspect
     
     others.each_value do |i|
-      a = Math.sqrt((i.position[0] - @position[0]) + 
-          (i.position[1] - @position[1]) + 
-          (i.position[2] - @position[2]))**3
+      a = (i.getposition[0] - @position[0])**2 + 
+          (i.getposition[1] - @position[1])**2 + 
+          (i.getposition[2] - @position[2])**2
       
-      sumf += i.mass * ((i.position - @position) * (1.0/a))
+#      puts "mass.rb - a.inspect" + a.inspect
+      
+      a = Math.sqrt(a)**3
+      
+      sumf += i.getmass * ((i.getposition - @position) * (1.0/a))
     end
     
     @forces = @@g * sumf

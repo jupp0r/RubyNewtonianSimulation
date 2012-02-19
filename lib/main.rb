@@ -1,5 +1,5 @@
-require 'mass'
-require 'initializer'
+require './mass.rb'
+require './initializer.rb'
 require 'matrix'
 
 # simulates n-bodys in a newtonian way
@@ -14,7 +14,8 @@ planets.each { |k,v|
 }
 
 planets.each { |k,v|  
-#  puts "puts v.class: " + v.class
+  puts "puts v.inspect: " + v.inspect
   v.calcforces(p1)
-  }
+  puts "puts v.inspect, after: " + v.inspect + "\n\n"
+}
   

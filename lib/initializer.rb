@@ -1,4 +1,4 @@
-require 'mass'
+require './mass.rb'
 require 'matrix'
 # This is just a container for lengthy input-parameters
 class Initializer
