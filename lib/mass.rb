@@ -22,31 +22,30 @@ attr_accessor :mass, :move, :position, :forces, :acceleration
     
 #    puts "mass.rb - others.inspect: " + others.inspect
     
-    others.each_value do |i|
-      a = (i.getposition[0] - @position[0])**2 + 
-          (i.getposition[1] - @position[1])**2 + 
-          (i.getposition[2] - @position[2])**2
+    others.each do |k,i|
+      a = (i.position[0] - @position[0])**2 + 
+          (i.position[1] - @position[1])**2 + 
+          (i.position[2] - @position[2])**2
       
 #      puts "mass.rb - a.inspect" + a.inspect
       
       a = Math.sqrt(a)**3
-      
-      sumf += i.getmass * ((i.getposition - @position) * (1.0/a))
+      sumf += (i.mass * ((i.position - @position) * (1.0/a)))
     end
     
-    @forces = @@g * sumf
+    @forces = sumf * @@g
   end
   
   def calcaccel
     @acceleration = @forces / @mass
   end
 
-  def position= (pos)
-    @positiondb = pos
+  def position= (position)
+    @positiondb = position
   end
 
-  def move= (m)
-      @movedb = m
+  def move= (move)
+      @movedb = move
   end
   
   # updates all values from double-buffer to values

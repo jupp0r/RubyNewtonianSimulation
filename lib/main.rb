@@ -5,12 +5,12 @@ require 'matrix'
 # simulates n-bodys in a newtonian way
 
 system = Initializer.new
-planets = system.getplanets
-p1 = system.getplanets
+planets = system.planets
+p1 = system.planets.clone
 
 planets.each { |k,v|  
   puts k + ": "
-  puts v.getforces
+  puts v.forces
 }
 
 planets.each { |k,v|  
@@ -18,4 +18,3 @@ planets.each { |k,v|
   v.calcforces(p1)
   puts "puts v.inspect, after: " + v.inspect + "\n\n"
 }
-  

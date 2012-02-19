@@ -2,6 +2,8 @@ require './mass.rb'
 require 'matrix'
 # This is just a container for lengthy input-parameters
 class Initializer
+
+  attr_reader :planets
   
   def initialize
     @planets = Hash.new
@@ -29,10 +31,5 @@ class Initializer
         Vector[0.0, 20.0, 0.0]  # outsite the center
       )
   end
-  
-  # to put 
-  def getplanets
-    return @planets
-  end
-  
+    
 end
