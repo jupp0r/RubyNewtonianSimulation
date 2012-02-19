@@ -45,12 +45,16 @@ class Mass
     sumf = Vector[0.0, 0.0, 0.0]
     g = 6.67384*10**(-11)
     
-    puts "mass.rb - others.inspect: " + others.inspect
+#    puts "mass.rb - others.inspect: " + others.inspect
     
     others.each_value do |i|
-      a = Math.sqrt((i.getposition[0] - @position[0]) + 
-          (i.getposition[1] - @position[1]) + 
-          (i.getposition[2] - @position[2]))**3
+      a = (i.getposition[0] - @position[0])**2 + 
+          (i.getposition[1] - @position[1])**2 + 
+          (i.getposition[2] - @position[2])**2
+      
+#      puts "mass.rb - a.inspect" + a.inspect
+      
+      a = Math.sqrt(a)**3
       
       sumf += i.getmass * ((i.getposition - @position) * (1.0/a))
     end
